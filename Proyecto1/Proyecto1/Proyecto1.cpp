@@ -7,11 +7,10 @@
 
 int main()
 {
-<<<<<<< HEAD
-    std::cout << "Hola prueba jeremy jiji";
-    std::cout << "jejejejejejejeje";
-=======
+
     Deportista* persona1 = new Deportista("111", "Juan", 6064654, 'M');
     cout << persona1->toString();
->>>>>>> main
+
+
+
 }
