@@ -1,4 +1,6 @@
 #include "Deportista.h"
+#include <sstream>
+
 //Tira un error que no entiendo desde antes que implementara los métodos acá.
 
 Deportista::Deportista(string id, string nombre, int telefono, char s) : id(id), nombre(nombre), telefono(telefono), sexo(s)
@@ -47,4 +49,17 @@ char Deportista::getSexo()
 void Deportista::setSexo(char s)
 {
 	sexo = s;
+}
+
+string Deportista::toString() const
+{
+	stringstream r;
+	r << "Nombre: " << nombre << endl;
+	r << "ID: " << id << endl;
+	r << "Telefono: " << telefono << endl;
+	r << "Sexo: " << sexo << endl;
+
+	return r.str();
+
+	
 }
