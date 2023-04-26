@@ -9,8 +9,10 @@ int main()
 {
 
     Deportista* persona1 = new Deportista("111", "Juan", 6064654, 'M');
-    cout << persona1->toString();
 
+    Lista<Deportista> lista1;
+    lista1.agregar(persona1);
 
+    cout << lista1.toString();
 
 }
