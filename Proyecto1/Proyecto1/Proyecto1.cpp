@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include "Lista.h"
 #include "Deportista.h"
 
 int main()

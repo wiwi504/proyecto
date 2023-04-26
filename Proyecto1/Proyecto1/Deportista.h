@@ -1,8 +1,10 @@
 #pragma once
+
+#include "ObjetoBase.h"
 #include <string>
 using namespace std;
 
-class Deportista // : public Triatlonista
+class Deportista : public ObjetoBase// : public Triatlonista
 {
 public:
 	Deportista(string, string, int, char);
