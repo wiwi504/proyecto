@@ -4,29 +4,15 @@
 #include <string>
 using namespace std;
 
-class Deportista : public ObjetoBase// : public Triatlonista
+class Deportista : public ObjetoBase
 {
 public:
 	Deportista(string, string, int, char);
 	virtual ~Deportista();
 
-	//set y get
-	virtual string getId();
-	virtual void setId(string);
-
-	virtual string getNombre();
-	virtual void setNombre(string);
-
-	virtual int getTelefono();
-	virtual void setTelefono(int);
-
-	virtual char getSexo();
-	virtual void setSexo(char);
-
 	virtual string toString() const;
 
 	//Hacer metodo para obtener fecha de nacimiento por día, mes y año.
-	//Pedir y obtener datos biométricos.
 	//pedir fecha de registro
 
 private:
@@ -34,4 +20,6 @@ private:
 	string nombre;
 	int telefono;
 	char sexo;
+	//Fecha* fechaNacim;
+	//Fecha* fechaRegistro;
 };
