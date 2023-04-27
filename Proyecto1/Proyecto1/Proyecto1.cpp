@@ -7,7 +7,10 @@ int main()
 {
 
 
+    Menu menu;
+    menu.mostrar();
 
+    return 0;
 
 
     //string cedula, nombre, sexo;
