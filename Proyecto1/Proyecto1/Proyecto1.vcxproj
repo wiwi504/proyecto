@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DatosBio.cpp" />
     <ClCompile Include="Deportista.cpp" />
     <ClCompile Include="Gimnasio.cpp" />
     <ClCompile Include="Lista.cpp" />
@@ -136,6 +137,7 @@
     <ClCompile Include="Proyecto1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DatosBio.h" />
     <ClInclude Include="Deportista.h" />
     <ClInclude Include="Gimnasio.h" />
     <ClInclude Include="Lista.h" />
