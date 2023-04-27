@@ -5,13 +5,18 @@
 
 int main()
 {
-    string cedula, nombre, sexo;
-    int numero = 0;
 
-    Menu menu;
-    menu.mostrarOpciones();
-    menu.agregarCliente(cedula,nombre,numero,sexo); // no está haciendo nada, falta el vector en el metodo
-                                                    // era para ver si mostraba bien el menu
+
+
+
+
+    //string cedula, nombre, sexo;
+    //int numero = 0;
+
+    //Menu menu;
+    //menu.mostrarOpciones();
+    //menu.agregarCliente(cedula,nombre,numero,sexo); // no está haciendo nada, falta el vector en el metodo
+    //                                                // era para ver si mostraba bien el menu
 
 
     //Deportista* persona1 = new Deportista("111", "Juan", 6064654, 'M');

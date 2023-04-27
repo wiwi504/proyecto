@@ -1,2 +1,10 @@
-﻿  Menu.cpp
-  Proyecto1.vcxproj -> D:\Devylan\Documentos\1A UNIVERSIDAD\2 - Segundo Año\2 - Programación II\proyecto\Proyecto1\x64\Debug\Proyecto1.exe
+﻿  Deportista.cpp
+  Gimnasio.cpp
+  Lista.cpp
+  Menu.cpp
+  Nodo.cpp
+  ObjetoBase.cpp
+  Proyecto1.cpp
+  Generando código...
+  LINK : no se encontró C:\Users\jerem\Desktop\proyecto\Proyecto1\x64\Debug\Proyecto1.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+  Proyecto1.vcxproj -> C:\Users\jerem\Desktop\proyecto\Proyecto1\x64\Debug\Proyecto1.exe
