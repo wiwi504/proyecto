@@ -6,7 +6,7 @@ using namespace std;
 Menu::Menu() : opcion(0), deportistas(new Lista<Deportista>())/*, bios(new DatosBio())*/ /*inicializar bien DatosBio*/ , gym(new Gimnasio())
 {
 }
-
+//hhhhhh
 Menu::~Menu()
 {
 }
@@ -173,30 +173,35 @@ void Menu::iniciar()
 
         case 8: //agregar curso
             system("cls");
-            cout << "\nNombre del curso: ";
-            cin >> nombreCurso;
-            
-            cout << "\nDescripcion del Curso: ";
-            cin >> descripcion;
+            do
+            {
+                cout << "\nNombre del curso: ";
+                cin >> nombreCurso;
 
-            cout << "\nNivel de Curso: ";
-            cin >> nivel;
+                cout << "\nDescripcion del Curso: ";
+                cin >> descripcion;
 
-            cout << "\nFecha de inicio: ";
-            cin >> fechas;
+                cout << "\nNivel de Curso: ";
+                cin >> nivel;
 
-            cout << "\nHorario del curso: ";
-            cin >> horario;
+                cout << "\nFecha de inicio: ";
+                cin >> fechas;
 
-            cout << "\nCupo maximo: ";
-            cin >> cupoMaximo;
+                cout << "\nHorario del curso: ";
+                cin >> horario;
 
-            cout << "Lista de clientes incritos: ";
-            //no sé cómo hacer eso
+                cout << "\nCupo maximo: ";
+                cin >> cupoMaximo;
 
-            curso = new Curso(nombreCurso, descripcion, nivel, fechas, horario, cupoMaximo);
-            gym->agregarCurso(curso);
+                cout << "Lista de clientes incritos: ";
+                //no sé cómo hacer eso
 
+                curso = new Curso(nombreCurso, descripcion, nivel, fechas, horario, cupoMaximo);
+
+
+                gym->agregarCurso(curso);
+
+            } while ();
             cout << "Curso agregado correctamente." << endl;
             system("pause");
 
@@ -209,6 +214,7 @@ void Menu::iniciar()
 
             cout << "Ingrese la cantidad de deportistas que tendra dicho grupo: ";
             cin >> capacidad;
+            
 
             cout << "Grupo registrado correctamente";
             system("pause");
