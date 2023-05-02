@@ -1,33 +1,16 @@
 #include <iostream>
-#include "Lista.h"
 #include "Menu.h"
-#include "Deportista.h"
 
 int main()
 {
-
-
-    Menu menu;
-    menu.mostrar();
-
-    return 0;
-
-
-    //string cedula, nombre, sexo;
-    //int numero = 0;
-
-    //Menu menu;
-    //menu.mostrarOpciones();
-    //menu.agregarCliente(cedula,nombre,numero,sexo); // no estÃ¡ haciendo nada, falta el vector en el metodo
-    //                                                // era para ver si mostraba bien el menu
-
-
-    //Deportista* persona1 = new Deportista("111", "Juan", 6064654, 'M');
-
-    //Lista<Deportista> lista1;
-    //lista1.agregar(persona1);
-
-    //cout << lista1.toString();
-
+    Menu* m = new Menu();
+    m->iniciar();
+    delete m;
     return 0;
 }
+
+//todas las pruebas que vaya a hacer le pone su nombre y hágalas en menu
+//la clase menu la arreglé acorde a la plantilla interfaz de la profe
+//no pude inicializar datosbio en menu.cpp
+//ya agregué iterador a la lista
+//la clase gimnasio, curso y grupo lo estab intentando con el laboratorio universidad del año pasado

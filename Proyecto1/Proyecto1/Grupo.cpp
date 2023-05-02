@@ -20,7 +20,7 @@ void Grupo::incrementarCantidadMatriculados()
 	cantidadMatriculados++;
 }
 
-string Grupo::toString()
+string Grupo::toString() const
 {
 	stringstream x;
 

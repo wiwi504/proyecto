@@ -1,25 +1,35 @@
 #pragma once
 
 #include "ObjetoBase.h"
+#include "DatosBio.h"
+#include "Fecha.h"
 #include <string>
 using namespace std;
 
 class Deportista : public ObjetoBase
 {
 public:
-	Deportista(string, string, int, char);
+	Deportista(string, string, string, char, DatosBio*);
 	virtual ~Deportista();
 
-	virtual string toString() const;
+	virtual void setId(string);
+	virtual void setNombre(string);
+	virtual void setTelefono(string);
+	virtual void setSexo(char);
 
-	//Hacer metodo para obtener fecha de nacimiento por día, mes y año.
-	//pedir fecha de registro
+	virtual string getId();
+	virtual string getNombre();
+	virtual string getTelefono();
+	virtual char getsexo();
+
+	virtual string toString() const;
 
 private:
 	string id;
 	string nombre;
-	int telefono;
+	string telefono;
 	char sexo;
-	//Fecha* fechaNacim;
+	DatosBio* datosBio;
+	Fecha* fechaNacim;
 	//Fecha* fechaRegistro;
 };
