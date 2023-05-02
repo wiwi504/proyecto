@@ -2,7 +2,7 @@
 #include <sstream>
 using std::stringstream;
 
-Curso::Curso(string nombreCurso, string descripcion, string nivel, string fechas, string horario, int cupoMaximo) : nombreCurso(nombreCurso), descripcion(descripcion), nivel(nivel), fechas(fechas), horario(horario), cupoMaximo(cupoMaximo) /*, grupos(new Lista<Grupo>() )*/
+Curso::Curso(string nombreCurso, string descripcion, string nivel, string fechas, string horario, int cupoMaximo) : nombreCurso(nombreCurso), descripcion(descripcion), nivel(nivel), fechas(fechas), horario(horario), cupoMaximo(cupoMaximo), grupos(new Lista<Grupo>())
 {
 }
 
@@ -40,12 +40,10 @@ int Curso::getCupoMaximo() const
 	return this->cupoMaximo;
 }
 
-
-
-//void Curso::agregarGrupo(Grupo* grupo)
-//{
-//	grupos->agregar(grupo);
-//}
+void Curso::agregarGrupo(Grupo* grupo)
+{
+	grupos->agregar(grupo);
+}
 
 string Curso::toString() const
 {
@@ -59,4 +57,19 @@ string Curso::toString() const
 	x << "Cupo Máximo: " << cupoMaximo << endl;
 
 	return x.str();
+}
+
+string Curso::toStringConGrupo() const
+{
+	stringstream z;
+
+	z << "Curso: " << nombreCurso << endl;
+	z << "Descripcion: " << descripcion << endl;
+	z << "Nivel: " << nivel << endl;
+	z << "Fechas: " << fechas << endl;
+	z << "Horario: " << horario << endl;
+	z << "Cupo Máximo: " << cupoMaximo << endl;
+	z << "Lista de grupos: " << grupos << endl;
+
+	return z.str();
 }

@@ -2,6 +2,7 @@
 #include "Lista.h"
 #include "Deportista.h"
 #include "Curso.h"
+#include "Gimnasio.h"
 
 #include <string>
 using namespace std;
@@ -17,4 +18,6 @@ public:
 private:
 	int opcion;
 	Lista<Deportista>* deportistas;
+	DatosBio* bios;
+	Gimnasio* gym;
 };
