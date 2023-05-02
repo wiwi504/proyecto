@@ -42,7 +42,7 @@ void Menu::iniciar()
     int cupoMaximo;
     Curso* curso;
     
-    int numero, capacidad, cantidadMatrulados;
+    int numeroGrupo, capacidad, cantidadMatriculados;
     Grupo* grupo;
 
     do 
@@ -205,7 +205,7 @@ void Menu::iniciar()
         case 9: //agregar de grupos
             system("cls");
             cout << "Ingrese el numero del grupo: ";
-            cin >> numero;
+            cin >> numeroGrupo;
 
             cout << "Ingrese la cantidad de deportistas que tendra dicho grupo: ";
             cin >> capacidad;
