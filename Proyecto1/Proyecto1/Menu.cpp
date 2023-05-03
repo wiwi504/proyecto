@@ -24,7 +24,7 @@ void Menu::menuPrincipal()
     cout << "\n6. Agregar clientes.";
     cout << "\n7. Actualizar clientes.";
     cout << "\n8. Agregar Curso.";
-    cout << "\n8. .";
+    cout << "\n9. Inscribirse al curso";
     cout << "\n0. Salir.";
     cout << "\n";
 }
@@ -206,8 +206,8 @@ void Menu::iniciar()
                 cin >> cupoMaximo;
 
                 cout << "Lista de clientes incritos: ";
-                //no sé cómo hacer eso
-                //agregar curso con grupo to string
+                //no sé cómo hacer eso VA EN INSCRIBIRSE A CURSO
+                
 
                 curso = new Curso(nombreCurso, descripcion, nivel, fechas, horario, cupoMaximo);
 
@@ -240,7 +240,7 @@ void Menu::iniciar()
 
             break;
 
-        case 9: 
+        case 9: //inscribirse al curso
             system("cls");
             
             system("pause");
