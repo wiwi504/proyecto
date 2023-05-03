@@ -1,12 +1,10 @@
 #pragma once
 #include "ObjetoBase.h"
-#include <string>
-using namespace std;
 
 class Grupo : public ObjetoBase
 {
 public:
-	Grupo(int);
+	Grupo(int, int);
 	virtual ~Grupo();
 	virtual int getNumero();
 	virtual void incrementarCantidadMatriculados();

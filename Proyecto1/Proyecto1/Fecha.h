@@ -8,7 +8,7 @@ public:
 	virtual ~Fecha();
 	virtual int difFecha(const Fecha& fechaInicio) const;
 	int edad(const Fecha& fechaNacim) const;
-	virtual int registro();
+	/*virtual int registro();*/
 
 private:
 	int dia;

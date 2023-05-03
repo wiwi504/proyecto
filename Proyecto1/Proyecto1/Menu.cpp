@@ -3,10 +3,10 @@
 #include <string>
 using namespace std;
 
-Menu::Menu() : opcion(0), deportistas(new Lista<Deportista>())/*, bios(new DatosBio())*/ /*inicializar bien DatosBio*/ , gym(new Gimnasio())
+Menu::Menu() : opcion(0), deportistas(new Lista<Deportista>()), bios(NULL) /*inicializar bien DatosBio*/ , gym(new Gimnasio()), grupos(new Lista<Grupo>())
 {
 }
-//hhhhhh
+
 Menu::~Menu()
 {
 }
@@ -24,7 +24,7 @@ void Menu::menuPrincipal()
     cout << "\n6. Agregar clientes.";
     cout << "\n7. Actualizar clientes.";
     cout << "\n8. Agregar Curso.";
-    cout << "\n8. Agregar grupo.";
+    cout << "\n8. .";
     cout << "\n0. Salir.";
     cout << "\n";
 }
@@ -35,7 +35,7 @@ void Menu::iniciar()
     char sexo;
     double estatura, peso, porcGrasaCorpo, porcMasaMuscu;
     Deportista* deportista;
-    DatosBio* datosBio;
+    //DatosBio* bios;
     IteradorLista<Deportista>* Cl;
 
     string nombreCurso, descripcion, nivel, fechas, horario;
@@ -44,6 +44,11 @@ void Menu::iniciar()
     
     int numeroGrupo, capacidad, cantidadMatriculados;
     Grupo* grupo;
+    IteradorLista<Grupo>* g;
+
+    int continuar1 = 1;
+    int continuar2 = 1;
+
 
     do 
     {
@@ -82,7 +87,12 @@ void Menu::iniciar()
 
         case 5: //Lista de grupos
             system("cls");
-
+            g = grupos->obtenerIterador();
+            while (g->masElementos()) {
+                grupo = g->proximoElemento();
+                cout << "\n" << grupo->toString();
+            }
+            delete g;
             system("pause");
             break;
 
@@ -114,8 +124,8 @@ void Menu::iniciar()
             cout << "Ingrese su porcentaje de masa muscular: ";
             cin >> porcMasaMuscu;
 
-            datosBio = new DatosBio(estatura, peso, porcGrasaCorpo, porcMasaMuscu);
-            deportista = new Deportista(id, nombre, numero, sexo, datosBio);
+            bios = new DatosBio(estatura, peso, porcGrasaCorpo, porcMasaMuscu);
+            deportista = new Deportista(id, nombre, numero, sexo, bios);
             deportistas->agregar(deportista);
 
             cout << "\nCliente registrado con exito." << endl;
@@ -151,19 +161,19 @@ void Menu::iniciar()
 
                     cout << "Ingrese su nueva estatura: ";
                     cin >> estatura;
-                    datosBio->setEstatura(estatura);
+                    bios->setEstatura(estatura);
 
                     cout << "Ingrese su nuevo peso: ";
                     cin >> peso;
-                    datosBio->setPeso(peso);
+                    bios->setPeso(peso);
 
                     cout << "Ingrese su nuevo porcentaje de grasa corporal: ";
                     cin >> porcGrasaCorpo;
-                    datosBio->setPorcGrasaCorpo(porcGrasaCorpo);
+                    bios->setPorcGrasaCorpo(porcGrasaCorpo);
                 
                     cout << "Ingrese su nuevo porcentaje de masa muscular: ";
                     cin >> porcMasaMuscu;
-                    datosBio->setPorcMasaMuscu(porcMasaMuscu);
+                    bios->setPorcMasaMuscu(porcMasaMuscu);
 
                     cout << "\nCliente actualizado exitosamente.";
                     system("pause");
@@ -173,8 +183,10 @@ void Menu::iniciar()
 
         case 8: //agregar curso
             system("cls");
+            
             do
             {
+                cout << "Agregar curso" << endl;
                 cout << "\nNombre del curso: ";
                 cin >> nombreCurso;
 
@@ -195,28 +207,42 @@ void Menu::iniciar()
 
                 cout << "Lista de clientes incritos: ";
                 //no sé cómo hacer eso
+                //agregar curso con grupo to string
 
                 curso = new Curso(nombreCurso, descripcion, nivel, fechas, horario, cupoMaximo);
 
+                do {
+                    cout << "Agregar Grupo" << endl;
+                    cout << "Ingrese el numero del grupo: ";
+                    cin >> numeroGrupo;
+
+                    cout << "Ingrese la cantidad de deportistas que tendra dicho grupo: ";
+                    cin >> capacidad;
+
+                    grupo = new Grupo(numeroGrupo, capacidad);
+                    curso->agregarGrupo(grupo);
+
+
+                    cout << "\nDesea agregar otro grupo. Digite 1. Si o 2.No: ";
+                    cin >> continuar1;
+
+                } while (continuar1 == 1);
 
                 gym->agregarCurso(curso);
 
-            } while ();
+                cout << "\nDesea agregar otro curso. Digite 1. Si o 2.No: ";
+                cin >> continuar2;
+
+            } while (continuar2 == 1);
+
             cout << "Curso agregado correctamente." << endl;
             system("pause");
 
             break;
 
-        case 9: //agregar de grupos
+        case 9: 
             system("cls");
-            cout << "Ingrese el numero del grupo: ";
-            cin >> numeroGrupo;
-
-            cout << "Ingrese la cantidad de deportistas que tendra dicho grupo: ";
-            cin >> capacidad;
             
-
-            cout << "Grupo registrado correctamente";
             system("pause");
             break;
 

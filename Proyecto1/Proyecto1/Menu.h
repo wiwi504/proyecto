@@ -20,4 +20,5 @@ private:
 	Lista<Deportista>* deportistas;
 	DatosBio* bios;
 	Gimnasio* gym;
+	Lista<Grupo>* grupos;
 };
