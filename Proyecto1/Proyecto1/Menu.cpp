@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-Menu::Menu() : opcion(0), deportistas(new Lista<Deportista>()), bios(NULL) /*inicializar bien DatosBio*/ , gym(new Gimnasio()), grupos(new Lista<Grupo>())
+Menu::Menu() : opcion(0), deportistas(new Lista<Deportista>()), bios(NULL), gym(new Gimnasio()), grupos(new Lista<Grupo>()), cursos(new Lista<Curso>())
 {
 }
 
@@ -35,13 +35,12 @@ void Menu::iniciar()
     char sexo;
     double estatura, peso, porcGrasaCorpo, porcMasaMuscu;
     Deportista* deportista;
-    //DatosBio* bios;
     IteradorLista<Deportista>* Cl;
 
     string nombreCurso, descripcion, nivel, fechas, horario;
     int cupoMaximo;
     Curso* curso;
-    
+    IteradorLista<Curso>* LisCur;
     int numeroGrupo, capacidad, cantidadMatriculados;
     Grupo* grupo;
     IteradorLista<Grupo>* g;
@@ -205,9 +204,9 @@ void Menu::iniciar()
                 cout << "\nCupo maximo: ";
                 cin >> cupoMaximo;
 
-                cout << "Lista de clientes incritos: ";
+                cout << "\nLista de clientes incritos: ";
                 //no sé cómo hacer eso VA EN INSCRIBIRSE A CURSO
-                
+                cout << endl;
 
                 curso = new Curso(nombreCurso, descripcion, nivel, fechas, horario, cupoMaximo);
 
@@ -242,7 +241,26 @@ void Menu::iniciar()
 
         case 9: //inscribirse al curso
             system("cls");
-            
+            cout << "Inscribirse a un grupo" << endl;
+            cout << "Lista de cursos" << endl;
+            cout << gym->listaCursoConGrupo();
+           
+            LisCur = cursos->obtenerIterador();
+
+            while (LisCur->masElementos())
+            {
+                curso = LisCur->proximoElemento();
+
+                cout << "\nIngrese el nombre del curso al que desea inscribirse: ";
+                cin >> nombreCurso;
+
+                if (nombreCurso == curso->getNombreCurso()) {
+                    cout << gym->listaCurso();
+                    
+
+
+                }
+            }
             system("pause");
             break;
 

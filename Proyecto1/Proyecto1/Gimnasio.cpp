@@ -21,7 +21,7 @@ string Gimnasio::listaCurso()
 	c = cursos->obtenerIterador();
 	while (c->masElementos()) {
 		curso = c->proximoElemento();
-		cout << "\n"/* << curso->toString()*/;
+		cout << "\n";
 		return curso->toString();
 	}
 }
@@ -33,7 +33,7 @@ string Gimnasio::listaCursoConGrupo()
 	c = cursos->obtenerIterador();
 	while (c->masElementos()) {
 		curso = c->proximoElemento();
-		cout << "\n"/* << curso->toString()*/;
+		cout << "\n";
 		return curso->toStringConGrupo();
 	}
 }

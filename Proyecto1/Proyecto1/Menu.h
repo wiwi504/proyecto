@@ -21,4 +21,5 @@ private:
 	DatosBio* bios;
 	Gimnasio* gym;
 	Lista<Grupo>* grupos;
+	Lista<Curso>* cursos;
 };
