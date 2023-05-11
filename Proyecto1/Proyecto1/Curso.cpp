@@ -68,7 +68,7 @@ string Curso::toStringConGrupo() const
 	z << "Nivel: " << nivel << endl;
 	z << "Fechas: " << fechas << endl;
 	z << "Horario: " << horario << endl;
-	z << "Cupo Máximo: " << cupoMaximo << endl;
+	z << "Cupo Maximo: " << cupoMaximo << endl;
 	z << "Lista de grupos: " << grupos << endl;
 
 	return z.str();

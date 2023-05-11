@@ -19,7 +19,7 @@ void Menu::menuPrincipal()
     cout << "\n2. Lista de clientes activos.";
     cout << "\n3. Lista de cursos disponibles.";
     cout << "\n4. Lista de cursos con sus respectivos grupos.";
-    cout << "\n5. Lista de grupos (clientes que han hecho reservas).";
+    cout << "\n5. Lista de grupos.";
     //Agregar y actualizar
     cout << "\n6. Agregar clientes.";
     cout << "\n7. Actualizar clientes.";
@@ -47,7 +47,7 @@ void Menu::iniciar()
 
     int continuar1 = 1;
     int continuar2 = 1;
-
+    int continuar3 = 1;
 
     do 
     {
@@ -97,7 +97,7 @@ void Menu::iniciar()
 
         case 6: // Agregar Clientes
             system("cls");
-            cout << "Información Personal" << endl;
+            cout << "Informacion Personal" << endl;
             cout << "Cedula: ";
             cin >> id;
 
@@ -110,7 +110,7 @@ void Menu::iniciar()
             cout << "Sexo (F o M): ";
             cin >> sexo;
 
-            cout << "Datos Biometricos" << endl;
+            cout << "\nDatos Biometricos" << endl;
             cout << "Ingrese su estatura: ";
             cin >> estatura;
 
@@ -176,9 +176,10 @@ void Menu::iniciar()
 
                     cout << "\nCliente actualizado exitosamente.";
                     system("pause");
-                    break;
+                    
                 }
             }
+            break;
 
         case 8: //agregar curso
             system("cls");
@@ -203,9 +204,6 @@ void Menu::iniciar()
 
                 cout << "\nCupo maximo: ";
                 cin >> cupoMaximo;
-
-                cout << "\nLista de clientes incritos: ";
-                //no sé cómo hacer eso VA EN INSCRIBIRSE A CURSO
                 cout << endl;
 
                 curso = new Curso(nombreCurso, descripcion, nivel, fechas, horario, cupoMaximo);
@@ -222,14 +220,14 @@ void Menu::iniciar()
                     curso->agregarGrupo(grupo);
 
 
-                    cout << "\nDesea agregar otro grupo. Digite 1. Si o 2.No: ";
+                    cout << "\nDesea agregar otro grupo. Digite 1.Si o 2.No: ";
                     cin >> continuar1;
 
                 } while (continuar1 == 1);
 
                 gym->agregarCurso(curso);
 
-                cout << "\nDesea agregar otro curso. Digite 1. Si o 2.No: ";
+                cout << "\nDesea agregar otro curso. Digite 1.Si o 2.No: ";
                 cin >> continuar2;
 
             } while (continuar2 == 1);
@@ -242,25 +240,59 @@ void Menu::iniciar()
         case 9: //inscribirse al curso
             system("cls");
             cout << "Inscribirse a un grupo" << endl;
-            cout << "Lista de cursos" << endl;
-            cout << gym->listaCursoConGrupo();
-           
-            LisCur = cursos->obtenerIterador();
+            cout << "\nLista de cursos" << endl;
+            cout << gym->listaCurso();
 
-            while (LisCur->masElementos())
+            do
             {
-                curso = LisCur->proximoElemento();
+                LisCur = cursos->obtenerIterador();
+                while (LisCur->masElementos())
+                {
+                    curso = LisCur->proximoElemento();
 
-                cout << "\nIngrese el nombre del curso al que desea inscribirse: ";
-                cin >> nombreCurso;
+                    cout << "\nIngrese el nombre del curso al que desea inscribirse: ";
+                    cin >> nombreCurso;
 
-                if (nombreCurso == curso->getNombreCurso()) {
-                    cout << gym->listaCurso();
-                    
+                    if (nombreCurso == curso->getNombreCurso())
+                    {
+                        cout << gym->listaCursoConGrupo();
 
+                        g = grupos->obtenerIterador();
+                        while (g->masElementos())
+                        {
+                            grupo = g->proximoElemento();
 
+                            cout << "\nIngrese el numero del grupo al que desea ingresar: ";
+                            cin >> numeroGrupo;
+
+                            if (numeroGrupo == grupo->getNumero())
+                            {
+                                cout << grupo->toString();
+
+                                Cl = deportistas->obtenerIterador();
+                                while (Cl->masElementos())
+                                {
+                                    deportista = Cl->proximoElemento();
+
+                                    cout << "\nDigite el id del cliente: ";
+                                    cin >> id;
+
+                                    if (id == deportista->getId())
+                                    {
+                                        cout << "\n" << deportista->toString();
+                                        deportistas->agregar(deportista);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-            }
+                /*cout << "\nLista de clientes incritos: ";*/
+                //no sé cómo hacer eso VA EN INSCRIBIRSE A CURSO
+                cout << "¿Desea inscribirse a otro curso? Digite 1.Si o 2.No: ";
+                cin >> continuar3;
+
+            } while (continuar3 == 1);
             system("pause");
             break;
 
