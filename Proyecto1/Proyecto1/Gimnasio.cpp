@@ -1,4 +1,6 @@
 #include "Gimnasio.h"
+#include <sstream>
+using std::stringstream;
 
 Gimnasio::Gimnasio() : cursos(new Lista<Curso>())
 {
@@ -16,24 +18,28 @@ void Gimnasio::agregarCurso(Curso* curso)
 
 string Gimnasio::listaCurso()
 {
+	stringstream x;
 	Curso* curso;
 	IteradorLista<Curso>* c;
 	c = cursos->obtenerIterador();
 	while (c->masElementos()) {
 		curso = c->proximoElemento();
-		cout << "\n";
-		return curso->toString();
+		x << "\n";
+		x << curso->toString();
 	}
+	return x.str();
 }
 
 string Gimnasio::listaCursoConGrupo()
 {
+	stringstream x;
 	Curso* curso;
 	IteradorLista<Curso>* c;
 	c = cursos->obtenerIterador();
 	while (c->masElementos()) {
 		curso = c->proximoElemento();
-		cout << "\n";
-		return curso->toStringConGrupo();
+		x << "\n";
+		x << curso->toStringConGrupo();
 	}
+	return x.str();
 }

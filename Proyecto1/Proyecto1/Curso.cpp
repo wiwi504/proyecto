@@ -54,7 +54,7 @@ string Curso::toString() const
 	x << "Nivel: " << nivel << endl;
 	x << "Fechas: " << fechas << endl;
 	x << "Horario: " << horario << endl;
-	x << "Cupo Máximo: " << cupoMaximo << endl;
+	x << "Cupo Maximo: " << cupoMaximo << endl;
 
 	return x.str();
 }
@@ -69,7 +69,14 @@ string Curso::toStringConGrupo() const
 	z << "Fechas: " << fechas << endl;
 	z << "Horario: " << horario << endl;
 	z << "Cupo Maximo: " << cupoMaximo << endl;
-	z << "Lista de grupos: " << grupos << endl;
+
+	Grupo* grupo;
+	IteradorLista<Grupo>* g;
+	g = grupos->obtenerIterador();
+	while (g->masElementos()) {
+		grupo = g->proximoElemento();
+		z << "\n" << grupo->toString() << endl;
+	}
 
 	return z.str();
 }

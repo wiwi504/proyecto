@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-Menu::Menu() : opcion(0), deportistas(new Lista<Deportista>()), bios(NULL), gym(new Gimnasio()), grupos(new Lista<Grupo>()), cursos(new Lista<Curso>())
+Menu::Menu() : opcion(0), deportistas(new Lista<Deportista>()), bios(NULL), G(new Lista<Gimnasio>()), gym(new Gimnasio()), grupo(NULL), curso(NULL)
 {
 }
 
@@ -39,11 +39,14 @@ void Menu::iniciar()
 
     string nombreCurso, descripcion, nivel, fechas, horario;
     int cupoMaximo;
-    Curso* curso;
-    IteradorLista<Curso>* LisCur;
-    int numeroGrupo, capacidad, cantidadMatriculados;
-    Grupo* grupo;
-    IteradorLista<Grupo>* g;
+    //Curso* curso;
+    //IteradorLista<Curso>* LisCur;
+    int numeroGrupo, capacidad;
+    //Grupo* grupo;
+    //IteradorLista<Grupo>* g;
+
+    //Gimnasio* gym;
+    IteradorLista<Gimnasio>* g;
 
     int continuar1 = 1;
     int continuar2 = 1;
@@ -86,12 +89,7 @@ void Menu::iniciar()
 
         case 5: //Lista de grupos
             system("cls");
-            g = grupos->obtenerIterador();
-            while (g->masElementos()) {
-                grupo = g->proximoElemento();
-                cout << "\n" << grupo->toString();
-            }
-            delete g;
+            //cout << "\n" << curso->toString();
             system("pause");
             break;
 
@@ -186,6 +184,7 @@ void Menu::iniciar()
             
             do
             {
+                system("cls");
                 cout << "Agregar curso" << endl;
                 cout << "\nNombre del curso: ";
                 cin >> nombreCurso;
@@ -209,7 +208,7 @@ void Menu::iniciar()
                 curso = new Curso(nombreCurso, descripcion, nivel, fechas, horario, cupoMaximo);
 
                 do {
-                    cout << "Agregar Grupo" << endl;
+                    cout << "\nAgregar Grupo" << endl;
                     cout << "Ingrese el numero del grupo: ";
                     cin >> numeroGrupo;
 
@@ -245,36 +244,31 @@ void Menu::iniciar()
 
             do
             {
-                LisCur = cursos->obtenerIterador();
-                while (LisCur->masElementos())
+               /* g = G->obtenerIterador();
+                while (g->masElementos())
                 {
-                    curso = LisCur->proximoElemento();
-
+                    gym = g->proximoElemento();*/
                     cout << "\nIngrese el nombre del curso al que desea inscribirse: ";
                     cin >> nombreCurso;
 
                     if (nombreCurso == curso->getNombreCurso())
                     {
                         cout << gym->listaCursoConGrupo();
-
-                        g = grupos->obtenerIterador();
+                       /* g = G->obtenerIterador();
                         while (g->masElementos())
                         {
-                            grupo = g->proximoElemento();
-
+                            gym = g->proximoElemento();*/
                             cout << "\nIngrese el numero del grupo al que desea ingresar: ";
                             cin >> numeroGrupo;
 
                             if (numeroGrupo == grupo->getNumero())
                             {
                                 cout << grupo->toString();
-
                                 Cl = deportistas->obtenerIterador();
                                 while (Cl->masElementos())
                                 {
                                     deportista = Cl->proximoElemento();
-
-                                    cout << "\nDigite el id del cliente: ";
+                                    cout << "\nDigite su id: ";
                                     cin >> id;
 
                                     if (id == deportista->getId())
@@ -284,11 +278,11 @@ void Menu::iniciar()
                                     }
                                 }
                             }
-                        }
+                        //}
                     }
-                }
+                //}
                 /*cout << "\nLista de clientes incritos: ";*/
-                //no sé cómo hacer eso VA EN INSCRIBIRSE A CURSO
+                //no sé cómo hacer eso
                 cout << "¿Desea inscribirse a otro curso? Digite 1.Si o 2.No: ";
                 cin >> continuar3;
 
@@ -306,4 +300,7 @@ void Menu::iniciar()
         }
         cout << endl;
     } while (opcion != 0);
+    delete gym;
+    delete curso;
+    delete grupo;
 }

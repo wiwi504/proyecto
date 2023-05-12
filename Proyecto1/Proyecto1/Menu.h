@@ -20,6 +20,9 @@ private:
 	Lista<Deportista>* deportistas;
 	DatosBio* bios;
 	Gimnasio* gym;
-	Lista<Grupo>* grupos;
-	Lista<Curso>* cursos;
+	Curso* curso;
+	Grupo* grupo;
+	//Lista<Grupo>* grupos;
+	//Lista<Curso>* cursos;
+	Lista<Gimnasio>* G;
 };
