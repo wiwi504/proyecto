@@ -154,7 +154,7 @@ void Menu::iniciar()
             {
                 deportista = Cl->proximoElemento();
 
-                cout << "\nDigite el id del cliente: ";
+                cout << "\nDigite el ID del cliente: ";
                 cin >> id;
 
                 if (id == deportista->getId()) {
