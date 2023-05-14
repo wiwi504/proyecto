@@ -19,7 +19,7 @@ public:
 
 	virtual string FechaActual();
 	virtual int difFecha();
-
+	//virtual int dif2(const Fecha&) const;
 	virtual string toString();
 
 private:

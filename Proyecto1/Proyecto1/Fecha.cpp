@@ -75,3 +75,13 @@ string Fecha::toString()
     x << dia << " - " << mes << " - " << anno;
     return x.str();
 }
+
+//int Fecha::dif2(const Fecha& regis) const
+//{
+//    int fecha = abs(anno - regis.anno);
+//    if (mes < regis.mes || (mes == regis.mes && dia < regis.dia)) 
+//    {
+//        fecha--;
+//    }
+//    return fecha;
+//}

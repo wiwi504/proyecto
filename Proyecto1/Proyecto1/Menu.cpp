@@ -13,7 +13,7 @@ Menu::~Menu()
 
 void Menu::menuPrincipal()
 {
-    cout << "Gimnasio" << endl;
+    cout << "-----------Gimnasio-----------" << endl;
     //Listas
     cout << "\n1. Lista general de clientes.";
     cout << "\n2. Lista de clientes activos.";
@@ -44,7 +44,7 @@ void Menu::iniciar()
     Fecha* fechaRegis = new Fecha(dia1, mes1, ano1);
     Fecha* fechaNacim = new Fecha(dia2, mes2, ano2);
     Fecha* fechaInicio = new Fecha(dia3, mes3, ano3);
-
+    int siono = 1;
     int continuar1 = 1;
     int continuar2 = 1;
     int continuar3 = 1;
@@ -71,7 +71,10 @@ void Menu::iniciar()
 
         case 2: //Clientes activos
             system("cls");
-
+            if (siono == 1)
+            {
+                cout << grupo->listaDeportistas();
+            }
             system("pause");
             break;
 
@@ -89,9 +92,9 @@ void Menu::iniciar()
 
         case 5: // Agregar Clientes
             system("cls");
-            cout << "Informacion Personal\n" << endl;
+            cout << "-----Informacion Personal-----" << endl;
 
-            cout << "\nFecha de registro" << endl;
+            cout << "\n-Fecha de registro-" << endl;
             cout << "Dia: ";
             cin >> dia1;
             cout << "Mes: ";
@@ -112,7 +115,7 @@ void Menu::iniciar()
             cout << "Sexo (F o M): ";
             cin >> sexo;
 
-            cout << "\nFecha de Nacimiento" << endl;
+            cout << "\n-Fecha de Nacimiento-" << endl;
             cout << "Dia: ";
             cin >> dia2;
             cout << "Mes: ";
@@ -121,7 +124,7 @@ void Menu::iniciar()
             cin >> ano2;
             fechaNacim = new Fecha(dia2, mes2, ano2);
 
-            cout << "\nDatos Biometricos\n" << endl;
+            cout << "\n-----Datos Biometricos-----\n" << endl;
             cout << "Ingrese su estatura: ";
             cin >> estatura;
 
@@ -138,7 +141,7 @@ void Menu::iniciar()
             deportista = new Deportista(fechaRegis, id, nombre, numero, sexo, fechaNacim, bios);
             deportistas->agregar(deportista);
 
-            cout << "\nCliente registrado con exito." << endl;
+            cout << "\n------Cliente registrado con exito.------" << endl;
             system("pause");
 
             break;
@@ -296,9 +299,25 @@ void Menu::iniciar()
                             if (id == deportista->getId())
                             {
                                 cout << "\n" << deportista->toString();
-                                fechaRegis->difFecha(); //arreglar 
-                                grupo->agregarDepor(deportista);
-                                grupo->incrementarCantidadMatriculados();
+                                //cout << fechaInicio->difFecha();
+                                //cout << fechaInicio->dif2(Fecha fechaRegis);
+
+                                //if (fechaInicio->difFecha() >= 0)
+                                //{
+                                //    cout << "\nDias de diferencia entre la facha de registro y la fecha de inicio del curso: " << fechaInicio->difFecha();
+                                //    cout << "El costo del curso es de $20, Desea matricularse? 1.SI | 2.NO: ";
+                                //    cin >> siono;
+                                //    while (siono == 1)
+                                //    {
+                                //        grupo->agregarDepor(deportista);
+                                //        grupo->incrementarCantidadMatriculados();
+                                //    }
+                                //}
+                                //else
+                                //{
+                                //    cout << "Ya es tarde tarde para matricular";
+
+                                //}
                             }
                         }
                     }
