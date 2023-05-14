@@ -1,19 +1,30 @@
 #pragma once
-#include <cmath>
+#include <ctime>
+#include <string>
+using namespace std;
 
 class Fecha
 {
 public:
 	Fecha(int, int, int);
 	virtual ~Fecha();
-	virtual int difFecha(const Fecha& fechaInicio) const;
-	int edad(const Fecha& fechaNacim) const;
-	/*virtual int registro();*/
+
+	virtual void setDia(int);
+	virtual void setMes(int);
+	virtual void setAnno(int);
+
+	virtual int getDia();
+	virtual int getMes();
+	virtual int getAnno();
+
+	virtual string FechaActual();
+	virtual int difFecha();
+
+	virtual string toString();
 
 private:
 	int dia;
 	int mes;
 	int anno;
-
 };
 

@@ -9,7 +9,7 @@ using namespace std;
 class Deportista : public ObjetoBase
 {
 public:
-	Deportista(string, string, string, char, DatosBio*);
+	Deportista(Fecha*, string, string, string, char, Fecha*, DatosBio*);
 	virtual ~Deportista();
 
 	virtual void setId(string);
@@ -31,5 +31,5 @@ private:
 	char sexo;
 	DatosBio* datosBio;
 	Fecha* fechaNacim;
-	//Fecha* fechaRegistro;
+	Fecha* fechaRegistro;
 };

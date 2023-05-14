@@ -22,7 +22,5 @@ private:
 	Gimnasio* gym;
 	Curso* curso;
 	Grupo* grupo;
-	//Lista<Grupo>* grupos;
-	//Lista<Curso>* cursos;
 	Lista<Gimnasio>* G;
 };

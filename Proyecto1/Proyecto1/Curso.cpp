@@ -2,7 +2,7 @@
 #include <sstream>
 using std::stringstream;
 
-Curso::Curso(string nombreCurso, string descripcion, string nivel, string fechas, string horario, int cupoMaximo) : nombreCurso(nombreCurso), descripcion(descripcion), nivel(nivel), fechas(fechas), horario(horario), cupoMaximo(cupoMaximo), grupos(new Lista<Grupo>())
+Curso::Curso(string nombreCurso, string descripcion, string nivel, Fecha* fechaInicio, string horario, int cupoMaximo) : nombreCurso(nombreCurso), descripcion(descripcion), nivel(nivel), fechaInicio(fechaInicio), horario(horario), cupoMaximo(cupoMaximo), grupos(new Lista<Grupo>())
 {
 }
 
@@ -23,11 +23,6 @@ string Curso::getDescripcion() const
 string Curso::getNivel() const
 {
 	return this->nivel;
-}
-
-string Curso::getFechas() const
-{
-	return this->fechas;
 }
 
 string Curso::getHorario() const
@@ -52,9 +47,9 @@ string Curso::toString() const
 	x << "Curso: " << nombreCurso << endl;
 	x << "Descripcion: " << descripcion << endl;
 	x << "Nivel: " << nivel << endl;
-	x << "Fechas: " << fechas << endl;
+	x << "Fecha: " << fechaInicio->toString() << endl;
 	x << "Horario: " << horario << endl;
-	x << "Cupo Maximo: " << cupoMaximo << endl;
+	x << "Cupo maximo de grupos: " << cupoMaximo << endl;
 
 	return x.str();
 }
@@ -66,16 +61,17 @@ string Curso::toStringConGrupo() const
 	z << "Curso: " << nombreCurso << endl;
 	z << "Descripcion: " << descripcion << endl;
 	z << "Nivel: " << nivel << endl;
-	z << "Fechas: " << fechas << endl;
+	z << "Fecha: " << fechaInicio->toString() << endl;
 	z << "Horario: " << horario << endl;
-	z << "Cupo Maximo: " << cupoMaximo << endl;
+	z << "Cupo maximo de grupos: " << cupoMaximo << endl;
 
 	Grupo* grupo;
 	IteradorLista<Grupo>* g;
 	g = grupos->obtenerIterador();
 	while (g->masElementos()) {
 		grupo = g->proximoElemento();
-		z << "\n" << grupo->toString() << endl;
+		z << "\nGrupos\n" << grupo->toString() << endl;
+		z << "\nLista de inscritos\n" << grupo->listaDeportistas() << endl;
 	}
 
 	return z.str();

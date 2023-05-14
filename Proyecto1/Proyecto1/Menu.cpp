@@ -19,14 +19,12 @@ void Menu::menuPrincipal()
     cout << "\n2. Lista de clientes activos.";
     cout << "\n3. Lista de cursos disponibles.";
     cout << "\n4. Lista de cursos con sus respectivos grupos.";
-    cout << "\n5. Lista de grupos.";
     //Agregar y actualizar
-    cout << "\n6. Agregar clientes.";
-    cout << "\n7. Actualizar clientes.";
-    cout << "\n8. Agregar Curso.";
-    cout << "\n9. Inscribirse al curso";
-    cout << "\n0. Salir.";
-    cout << "\n";
+    cout << "\n5. Agregar clientes.";
+    cout << "\n6. Actualizar clientes.";
+    cout << "\n7. Agregar Curso.";
+    cout << "\n8. Inscribirse al curso";
+    cout << "\n0. Salir. \n";
 }
 
 void Menu::iniciar()
@@ -39,20 +37,19 @@ void Menu::iniciar()
 
     string nombreCurso, descripcion, nivel, fechas, horario;
     int cupoMaximo;
-    //Curso* curso;
-    //IteradorLista<Curso>* LisCur;
-    int numeroGrupo, capacidad;
-    //Grupo* grupo;
-    //IteradorLista<Grupo>* g;
+    int numeroGrupo, capacidad, cantidadMatriculados = 0;
+    IteradorLista<Gimnasio>* g = nullptr;
 
-    //Gimnasio* gym;
-    IteradorLista<Gimnasio>* g;
+    int dia1 = 0, dia2 = 0, dia3 = 0, mes1 = 0, mes2 = 0, mes3 = 0, ano1 = 0, ano2 = 0, ano3 = 0;
+    Fecha* fechaRegis = new Fecha(dia1, mes1, ano1);
+    Fecha* fechaNacim = new Fecha(dia2, mes2, ano2);
+    Fecha* fechaInicio = new Fecha(dia3, mes3, ano3);
 
     int continuar1 = 1;
     int continuar2 = 1;
     int continuar3 = 1;
 
-    do 
+    do
     {
         system("cls");
         menuPrincipal();
@@ -66,13 +63,16 @@ void Menu::iniciar()
             Cl = deportistas->obtenerIterador();
             while (Cl->masElementos()) {
                 deportista = Cl->proximoElemento();
-                cout << "\n" << deportista->toString();
+                cout << deportista->toString();
             }
             delete Cl;
             system("pause");
             break;
 
-        case 2:
+        case 2: //Clientes activos
+            system("cls");
+
+            system("pause");
             break;
 
         case 3: //Lista de cursos
@@ -83,20 +83,24 @@ void Menu::iniciar()
 
         case 4: //Lista de cursos con sus respectivos grupos
             system("cls");
-            cout << gym->listaCursoConGrupo(); 
+            cout << gym->listaCursoConGrupo();
             system("pause");
             break;
 
-        case 5: //Lista de grupos
+        case 5: // Agregar Clientes
             system("cls");
-            //cout << "\n" << curso->toString();
-            system("pause");
-            break;
+            cout << "Informacion Personal\n" << endl;
 
-        case 6: // Agregar Clientes
-            system("cls");
-            cout << "Informacion Personal" << endl;
-            cout << "Cedula: ";
+            cout << "\nFecha de registro" << endl;
+            cout << "Dia: ";
+            cin >> dia1;
+            cout << "Mes: ";
+            cin >> mes1;
+            cout << "Ano: ";
+            cin >> ano1;
+            fechaRegis = new Fecha(dia1, mes1, ano1);
+
+            cout << "\nCedula: ";
             cin >> id;
 
             cout << "Nombre: ";
@@ -108,7 +112,16 @@ void Menu::iniciar()
             cout << "Sexo (F o M): ";
             cin >> sexo;
 
-            cout << "\nDatos Biometricos" << endl;
+            cout << "\nFecha de Nacimiento" << endl;
+            cout << "Dia: ";
+            cin >> dia2;
+            cout << "Mes: ";
+            cin >> mes2;
+            cout << "Anno: ";
+            cin >> ano2;
+            fechaNacim = new Fecha(dia2, mes2, ano2);
+
+            cout << "\nDatos Biometricos\n" << endl;
             cout << "Ingrese su estatura: ";
             cin >> estatura;
 
@@ -122,7 +135,7 @@ void Menu::iniciar()
             cin >> porcMasaMuscu;
 
             bios = new DatosBio(estatura, peso, porcGrasaCorpo, porcMasaMuscu);
-            deportista = new Deportista(id, nombre, numero, sexo, bios);
+            deportista = new Deportista(fechaRegis, id, nombre, numero, sexo, fechaNacim, bios);
             deportistas->agregar(deportista);
 
             cout << "\nCliente registrado con exito." << endl;
@@ -130,7 +143,7 @@ void Menu::iniciar()
 
             break;
 
-        case 7: //Actualizar cliente
+        case 6: //Actualizar cliente
             system("cls");
             Cl = deportistas->obtenerIterador();
 
@@ -156,6 +169,17 @@ void Menu::iniciar()
                     cin >> sexo;
                     deportista->setSexo(sexo);
 
+                    cout << "Digite su nueva fecha de nacimiento" << endl;
+                    cout << "Dia: ";
+                    cin >> dia2;
+                    cout << "Mes: ";
+                    cin >> mes2;
+                    cout << "Anno: ";
+                    cin >> ano2;
+                    fechaNacim->setDia(dia2);
+                    fechaNacim->setMes(mes2);
+                    fechaNacim->setMes(ano2);
+
                     cout << "Ingrese su nueva estatura: ";
                     cin >> estatura;
                     bios->setEstatura(estatura);
@@ -167,21 +191,21 @@ void Menu::iniciar()
                     cout << "Ingrese su nuevo porcentaje de grasa corporal: ";
                     cin >> porcGrasaCorpo;
                     bios->setPorcGrasaCorpo(porcGrasaCorpo);
-                
+
                     cout << "Ingrese su nuevo porcentaje de masa muscular: ";
                     cin >> porcMasaMuscu;
                     bios->setPorcMasaMuscu(porcMasaMuscu);
 
                     cout << "\nCliente actualizado exitosamente.";
                     system("pause");
-                    
+
                 }
             }
             break;
 
-        case 8: //agregar curso
+        case 7: //agregar curso
             system("cls");
-            
+
             do
             {
                 system("cls");
@@ -195,20 +219,26 @@ void Menu::iniciar()
                 cout << "\nNivel de Curso: ";
                 cin >> nivel;
 
-                cout << "\nFecha de inicio: ";
-                cin >> fechas;
+                cout << "\nFecha de inicio" << endl;
+                cout << "Dia: ";
+                cin >> dia3;
+                cout << "Mes: ";
+                cin >> mes3;
+                cout << "Anno: ";
+                cin >> ano3;
 
                 cout << "\nHorario del curso: ";
                 cin >> horario;
 
-                cout << "\nCupo maximo: ";
+                cout << "\nCupo maximo de grupos: ";
                 cin >> cupoMaximo;
                 cout << endl;
 
-                curso = new Curso(nombreCurso, descripcion, nivel, fechas, horario, cupoMaximo);
+                fechaInicio = new Fecha(dia3, mes3, ano3);
+                curso = new Curso(nombreCurso, descripcion, nivel, fechaInicio, horario, cupoMaximo);
 
                 do {
-                    cout << "\nAgregar Grupo" << endl;
+                    cout << "\nAgregar Grupo\n" << endl;
                     cout << "Ingrese el numero del grupo: ";
                     cin >> numeroGrupo;
 
@@ -236,7 +266,7 @@ void Menu::iniciar()
 
             break;
 
-        case 9: //inscribirse al curso
+        case 8: //inscribirse al curso
             system("cls");
             cout << "Inscribirse a un grupo" << endl;
             cout << "\nLista de cursos" << endl;
@@ -244,45 +274,38 @@ void Menu::iniciar()
 
             do
             {
-               /* g = G->obtenerIterador();
-                while (g->masElementos())
+                cout << "\nIngrese el nombre del curso al que desea inscribirse: ";
+                cin >> nombreCurso;
+
+                if (nombreCurso == curso->getNombreCurso())
                 {
-                    gym = g->proximoElemento();*/
-                    cout << "\nIngrese el nombre del curso al que desea inscribirse: ";
-                    cin >> nombreCurso;
+                    cout << gym->listaCursoConGrupo();
+                    cout << "\nIngrese el numero del grupo al que desea ingresar: ";
+                    cin >> numeroGrupo;
 
-                    if (nombreCurso == curso->getNombreCurso())
+                    if (numeroGrupo == grupo->getNumero())
                     {
-                        cout << gym->listaCursoConGrupo();
-                       /* g = G->obtenerIterador();
-                        while (g->masElementos())
+                        cout << grupo->toString();
+                        Cl = deportistas->obtenerIterador();
+                        while (Cl->masElementos())
                         {
-                            gym = g->proximoElemento();*/
-                            cout << "\nIngrese el numero del grupo al que desea ingresar: ";
-                            cin >> numeroGrupo;
+                            deportista = Cl->proximoElemento();
+                            cout << "\nDigite su id: ";
+                            cin >> id;
 
-                            if (numeroGrupo == grupo->getNumero())
+                            if (id == deportista->getId())
                             {
-                                cout << grupo->toString();
-                                Cl = deportistas->obtenerIterador();
-                                while (Cl->masElementos())
-                                {
-                                    deportista = Cl->proximoElemento();
-                                    cout << "\nDigite su id: ";
-                                    cin >> id;
-
-                                    if (id == deportista->getId())
-                                    {
-                                        cout << "\n" << deportista->toString();
-                                        deportistas->agregar(deportista);
-                                    }
-                                }
+                                cout << "\n" << deportista->toString();
+                                fechaRegis->difFecha(); //arreglar 
+                                grupo->agregarDepor(deportista);
+                                grupo->incrementarCantidadMatriculados();
                             }
-                        //}
+                        }
                     }
-                //}
-                /*cout << "\nLista de clientes incritos: ";*/
-                //no sé cómo hacer eso
+                }
+                cout << "\nLista de clientes incritos: \n";
+                cout << grupo->listaDeportistas();
+
                 cout << "¿Desea inscribirse a otro curso? Digite 1.Si o 2.No: ";
                 cin >> continuar3;
 
@@ -300,6 +323,7 @@ void Menu::iniciar()
         }
         cout << endl;
     } while (opcion != 0);
+
     delete gym;
     delete curso;
     delete grupo;
