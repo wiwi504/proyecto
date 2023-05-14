@@ -53,7 +53,7 @@ char Deportista::getsexo()
 string Deportista::toString() const
 {
 	stringstream r;
-	r << "Fecha de registro: " << fechaRegistro->toString() << endl;
+	r << "\nFecha de registro: " << fechaRegistro->toString() << endl;
 	r << "Nombre: " << nombre << endl;
 	r << "ID: " << id << endl;
 	r << "Telefono: " << telefono << endl;

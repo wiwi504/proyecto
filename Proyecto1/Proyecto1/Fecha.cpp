@@ -76,12 +76,21 @@ string Fecha::toString()
     return x.str();
 }
 
-//int Fecha::dif2(const Fecha& regis) const
-//{
-//    int fecha = abs(anno - regis.anno);
-//    if (mes < regis.mes || (mes == regis.mes && dia < regis.dia)) 
-//    {
-//        fecha--;
-//    }
-//    return fecha;
-//}
+int Fecha::dif2(Fecha* regis) const
+{
+    const int DIAS_POR_MES[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    int dias = dia - regis->getDia();
+    int meses = mes - regis->getMes();
+    int anios = anno - regis->getAnno();
+    int diasTotales = 0;
+
+    for (int i = 0; i < abs(meses); ++i) {
+        int diasEnMes = DIAS_POR_MES[(mes - i - 1 + 12) % 12];
+        diasTotales += diasEnMes;
+    }
+
+    diasTotales += anios * 365;
+    diasTotales += dias;
+
+    return diasTotales;
+}

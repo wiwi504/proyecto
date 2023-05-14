@@ -181,7 +181,7 @@ void Menu::iniciar()
                     cin >> ano2;
                     fechaNacim->setDia(dia2);
                     fechaNacim->setMes(mes2);
-                    fechaNacim->setMes(ano2);
+                    fechaNacim->setAnno(ano2);
 
                     cout << "Ingrese su nueva estatura: ";
                     cin >> estatura;
@@ -299,30 +299,31 @@ void Menu::iniciar()
                             if (id == deportista->getId())
                             {
                                 cout << "\n" << deportista->toString();
-                                //cout << fechaInicio->difFecha();
-                                //cout << fechaInicio->dif2(Fecha fechaRegis);
 
-                                //if (fechaInicio->difFecha() >= 0)
-                                //{
-                                //    cout << "\nDias de diferencia entre la facha de registro y la fecha de inicio del curso: " << fechaInicio->difFecha();
-                                //    cout << "El costo del curso es de $20, Desea matricularse? 1.SI | 2.NO: ";
-                                //    cin >> siono;
-                                //    while (siono == 1)
-                                //    {
-                                //        grupo->agregarDepor(deportista);
-                                //        grupo->incrementarCantidadMatriculados();
-                                //    }
-                                //}
-                                //else
-                                //{
-                                //    cout << "Ya es tarde tarde para matricular";
+                                if (fechaInicio->dif2(fechaRegis) >= 0)
+                                {
+                                    cout << "\nFaltan: " << fechaInicio->dif2(fechaRegis) << " dias para que inicie el curso";
+                                    cout << "\nEl costo del curso es de $20, Desea matricularse? 1.SI | 2.NO: ";
+                                    cin >> siono;
+                                    if (siono == 1)
+                                    {
+                                        grupo->agregarDepor(deportista);
+                                        grupo->incrementarCantidadMatriculados();
+                                        cout << "Cliente matriculado con exito." << endl;
 
-                                //}
+                                    }
+                                }
+                                else
+                                {
+                                    cout << "Ya es tarde tarde para matricular";
+                                    system("pause");
+                                    break;
+                                }
                             }
                         }
                     }
                 }
-                cout << "\nLista de clientes incritos: \n";
+                cout << "\nLista de clientes inscritos";
                 cout << grupo->listaDeportistas();
 
                 cout << "¿Desea inscribirse a otro curso? Digite 1.Si o 2.No: ";
