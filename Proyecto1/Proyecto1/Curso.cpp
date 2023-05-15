@@ -71,7 +71,7 @@ string Curso::toStringConGrupo() const
 	while (g->masElementos()) {
 		grupo = g->proximoElemento();
 		z << "\nGrupos\n" << grupo->toString() << endl;
-		z << "\nLista de inscritos\n" << grupo->listaDeportistas() << endl;
+		//z << "\nLista de inscritos\n" << grupo->listaDeportistas() << endl;
 	}
 
 	return z.str();
